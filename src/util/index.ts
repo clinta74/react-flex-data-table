@@ -1,0 +1,1 @@
+export { getObjectByNamespace, getValue } from './get-object-by-namespace';

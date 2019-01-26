@@ -1,0 +1,39 @@
+{
+  "name": "react-flex-table",
+  "version": "1.0.0",
+  "description": "A flexbox table for react.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clinta74/react-flex-table.git"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "flexbox",
+    "grid"
+  ],
+  "author": "Clint Andrews",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clinta74/react-flex-table/issues"
+  },
+  "homepage": "https://github.com/clinta74/react-flex-table#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "classnames": "^2.2.6",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "typescript": "^3.2.4"
+  }
+}

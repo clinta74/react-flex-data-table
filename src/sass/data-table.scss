@@ -1,0 +1,118 @@
+﻿@import "variables";
+.vf-data-table {
+    width: 100%;
+    background-color: $base-background-color;
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    thead,
+    .thead,
+    tfoot,
+    .tfoot {
+        background-color: darken($base-background-color, 10%);
+    }
+    .highlightrow {
+        background-color: darken($base-background-color, .5%);
+    }
+    th,
+    .th, 
+    td,
+    .td {
+        padding: 0.75em 1em;
+    }
+    th,
+    .th {
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    td,
+    .td {
+        border-right: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        text-overflow: ellipsis;
+        vertical-align: top;
+        position: relative;
+        z-index: auto;
+    }
+    col.minimal {
+        width: 1px;
+    }
+    .dt-action-item {
+        cursor: pointer;
+        &:hover {
+            background-color: $hover-background-color !important;
+        }
+        .editing & {
+            cursor: not-allowed;
+            &:hover {
+                background-color: inherit;
+            }
+        }
+    }
+}
+
+div.vf-data-table {
+    .tbody {
+        position: relative;
+        z-index: 2;
+        .tr {
+            position: relative;
+            z-index: 2;
+            &.editing,
+            &.active {
+                z-index: 10;
+            }
+            &.dt-group-row {
+                background-color: darken($base-background-color, 3%);
+                font-weight: 600;
+            }
+            &:nth-child(2n):not([class*='alert-']) {
+                background-color: $alternate-background-color;
+            }
+        }
+        .tr,
+        .th,
+        .td {
+            &.selected {
+                background-color: $selected-background-color !important;
+            }
+        }
+    }
+    .tfoot {
+        position: relative;
+        z-index: 1;
+        &.editing {
+            z-index: 10;
+        }
+        .tr.editing {
+            background-color: $base-background-color;
+        }
+    }
+    .tr {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .td,
+    .th {
+        flex-grow: 1;
+        box-sizing: border-box;
+        &.dt-shrink-column {
+            flex-grow: 0;
+            .btn {
+                min-width: 40px;
+            }
+        }
+    }
+    [class*="col-"] {
+        margin: 0;
+    }
+    &.dt-limited-body {
+        >.thead .tr,
+        >.tfoot .tr {
+            margin-right: 17px;
+        }
+        >.tbody {
+            max-height: 80vh;
+            overflow-y: scroll;
+        }
+    }
+}
