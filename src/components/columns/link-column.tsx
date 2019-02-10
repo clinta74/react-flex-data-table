@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
  * @param {any} { item, getLink, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-const LinkColumn = withHeader<DT.LinkColumnProps<any>>(({ item, getLink, children, cellClassName, hideHeader, ...attrs }) => {
+const LinkColumn = withHeader<FlexTable.LinkColumnProps<any>>(({ item, getLink, children, cellClassName, hideHeader, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
 
     return (

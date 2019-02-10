@@ -1,18 +1,7 @@
-﻿const getObjectByNamespace = function<T> (functionName: string, context: T) {
-    if (typeof (functionName) === "function") {
-        return functionName;
-    }
+﻿import { get } from 'lodash';
 
-    let namespaces = functionName.split(".");
-    let func = namespaces.pop();
-    for (var i = 0; i < namespaces.length; i++) {
-        context = context[namespaces[i]];
-
-        if (context === null || context === undefined) {
-            return context;
-        }
-    }
-    return func && context[func];
+const getObjectByNamespace = function<T> (functionName: string, context: T)  {
+    return get(context, functionName);
 };
 
 const getValue = function<T> (name: string, context: T) {

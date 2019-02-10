@@ -2,8 +2,9 @@
 import { TableCell } from '../elements';
 import classNames from 'classnames';
 
-const SubTable = ({ isVisible, hideHeader, onSubTableRender, cellClassName, ...attrs }) => {
-    let { item, className } = attrs;
+const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...attrs })=> {
+    const { cellClassName, isVisible, onSubTableRender} = props;
+    const { item, className } = attrs;
     const newCellClassName = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
 
     if (isVisible(item)) {

@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { groupBy } from 'lodash';
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHeaderCell, TableCell } from '../elements';
 
 
@@ -32,20 +33,20 @@ const getColumnHeaders = (children: FlexTable.ColumnType<any>[]) => (
     </TableRow>
 );
 
-var groupBy = function (xs: object[], key: (x: any) => any) {
-    return xs.reduce(function (rv, x) {
-        let kv = key(x);
-        (rv[kv] = rv[kv] || []).push(x);
-        return rv;
-    }, {});
-};
+// var groupBy = function<T, ID>(xs: T[], key: (x: T) => ID) {
+//     return xs.reduce(function (rv, x) {
+//         let kv = key(x);
+//         (rv[kv] = rv[kv] || []).push(x);
+//         return rv;
+//     }, {});
+// };
 
 // - Rendering
 
-const renderBody = <T extends {}>(items: T[],
+const renderBody = <T extends {}, ID = number>(items: T[],
     children: React.ReactElement<any>[],
     itemRenderer: FlexTable.RowRenderer<any> = renderRow,
-    grouping: FlexTable.Groupable,
+    grouping: FlexTable.Groupable<T, ID>,
     row: FlexTable.RowProps,
 ) => {
 
@@ -131,7 +132,7 @@ export class DataTable<T> extends React.PureComponent<FlexTable.DataTableProps<T
         const { items, children, className, header, footer, footerClassName, itemRenderer, groupOn, groupHeader, row, itemsPerPage, ...attrs } = this.props;
 
         if (items) {
-            const columns = Array.isArray(children) ? children as FlexTable.ColumnType<T>[] : Array.of(children) as FlexTable.ColumnType<T>[];
+            const columns = Array.isArray(children) ? children as FlexTable.ColumnType<T>[] : [children] as FlexTable.ColumnType<T>[];
             const renderColumnHeaders = hasAnyColumnHeaders(columns);
             const renderHeader = header !== false && (header || renderColumnHeaders);
             const renderFooter = !!footer;

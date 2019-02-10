@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 
 
-const TableHeaderCell = ({ headerText = '\u00a0', headerClass, className, cellClassName, children, binding, getLink, onRender, formatter, onAction, ...attrs }: DT.HeaderElement<any>) => {
+const TableHeaderCell = ({ headerText = '\u00a0', headerClass, className, cellClassName, children, binding, getLink, onRender, formatter, onAction, ...attrs }: FlexTable.HeaderElement<any>) => {
     const headerClassName: string | undefined = typeof headerClass === 'string' ?
         headerClass :
         headerClass && headerClass();

@@ -1,24 +1,32 @@
-﻿type ValidationResult = {
-    success: boolean,
-    messages: string[],
-}
+﻿const sumValidationResult = <M>(result1: FlexTable.ValidationResult<M>, result2: FlexTable.ValidationResult<M>) => {
+    const success = result1.success && result2.success;
+    return ({
+        success,
+        results: result2.success ? result1.results : [...result1.results, ...result2.results],
+    });
+};
 
-const toResult = (success: boolean, message: string | null) => ({ success, messages: message && [message] });
+const validate = <M, P>(test: FlexTable.ValidationTest<M, P>, params: P): FlexTable.ValidationResult<M>  => {
+    return ({
+        success: test.passCondition(params),
+        results: [test.result],
+    });
+};
 
-const getSuccessResult = () => toResult(true, null);
+const getSuccessResult = <M>() => {
+    return ({
+        success: true,
+        results: new Array() as M[]
+    });
+};
 
-const concatResult = (result1: ValidationResult, result2: ValidationResult) => toResult(
-    result1.success && result2.success,
-    [ ...result1.messages, ...result2.messages.filter(s => s) ]
-);
+const validateAll = <M, P>(tests: FlexTable.ValidationTest<M, P>[], params: P) => {
+    const testResults = tests.reduce((prev, next) => {
+        return sumValidationResult<M>(prev as FlexTable.ValidationResult<M>, validate<M, P>(next, params))
+    }, getSuccessResult());
 
-const validate = <T extends {}>(test: FlexTable.ValidationTest<T>, item: T, items: T[]) => 
-    test.passCondition(item, items) 
-        ? getSuccessResult() : toResult(false, test.message);
-
-        const validateAll = <T extends {}>(tests: FlexTable.ValidationTest<T>[], item: T, items: T[]) => 
-    tests.reduce((acc, next) => 
-        concatResult(acc, validate(next, ...args)), getSuccessResult());
+    return testResults;
+};
 
 export {
     validate,

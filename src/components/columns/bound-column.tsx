@@ -3,9 +3,9 @@ import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { getObjectByNamespace } from '../../util/'
 
+type Formatter = ((value: any) => any) | undefined;
 
-
-const getValue = (formatter, value) => formatter ? formatter(value) : value;
+const getValue = (formatter: Formatter, value: any) => formatter ? formatter(value) : value;
 
 /**
  * A bound column represents a table column which can 'bind' to a property of the items
@@ -17,7 +17,7 @@ const getValue = (formatter, value) => formatter ? formatter(value) : value;
  * @param {any} { item, binding, formatter, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-const BoundColumn = withHeader<DT.BoundColumnProps<any>>(({ item, binding, formatter, children, cellClassName, hideHeader, ...attrs }) => {
+const BoundColumn = withHeader<FlexTable.BoundColumnProps<any>>(({ item, binding, formatter, children, cellClassName, hideHeader, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) : binding(item)
     return (

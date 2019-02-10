@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 
 
-const TableHeader = ({ children, className, ...attrs }: DT.Element) => (
+const TableHeader = ({ children, className, ...attrs }: FlexTable.Element) => (
     <div className={classNames(className, 'thead')} { ...attrs }>
         {children}
     </div>

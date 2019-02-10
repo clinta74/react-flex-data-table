@@ -1,6 +1,5 @@
 ﻿import React from 'react';
 import classNames from 'classnames';
-import * as bootbox  from 'bootbox';
 
 import { validateAll } from '../../validation';
 import { DataTable } from './data-table';
@@ -17,13 +16,13 @@ import { faBan, faSave, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-
 // ----------------------------------------------------------------------
 
 // - Nodes
-const combineChildren = (children, newNode) => React.Children.toArray([].concat(children, newNode));
+const combineChildren = (children: any, newNode: any) => React.Children.toArray([].concat(children, newNode));
 
 // - Rendering
-function getItemRenderer<ID, T>({ form, idProperty, isEditing, editID, row }: FlexTable.EditableTableProps<ID, T>) {
+function getItemRenderer<ID, T>({ form, getId, isEditing, editID, row }: FlexTable.EditableTableProps<ID, T>) {
     const FormComponent = form;
-    return (item: any, _, row, defaultRenderer) => {
-        return isEditing && item[idProperty] === editID ?
+    return (item: any, defaultRenderer: any) => {
+        return isEditing && getId(item) === editID ?
             <FormComponent item={item} /> :
             defaultRenderer();
     }
@@ -53,16 +52,16 @@ function getFooter<ID, T>(props: FlexTable.EditableTableProps<ID, T>) {
 // - Saving items
 
 function getSaveHandler<T> (props: FlexTable.FormProps<T>) {
-    const { onSave, items, getState } = props;
+    const { onSave, items, getState, onValidation, validationTests } = props;
     const item = JSON.parse(JSON.stringify(getState()));
     
-    if (props.validationTests) {
-        const validationResult = validateAll(props.validationTests, item, items);
+    if (!!validationTests) {
+        const validationResult = validateAll(validationTests, { item, items });
 
         if (validationResult.success) {
             onSave(item);
         } else {
-            bootbox.alert(validationResult.messages.join('<br />'));
+            !!onValidation && onValidation(validationResult.messages);
         }
     } else {
         onSave(item);
@@ -95,8 +94,8 @@ export function EditableForm<T> (props: FlexTable.FormProps<T>) {
 };
 
 export function EditableTable<ID, T> (props: FlexTable.EditableTableProps<ID, T>) {
-    const { children, idProperty, isEditing, onEdit, onDelete, disableInsert, editID, row, nonEditableRow, footerClassName, form, insertItem, ...attrs } = props;
-    const attr = { idProperty, isEditing, onEdit, onDelete, editID, nonEditableRow };
+    const { children, getId, isEditing, onEdit, onDelete, disableInsert, editID, row, nonEditableRow, footerClassName, form, insertItem, ...attrs } = props;
+    const attr = { getId, isEditing, onEdit, onDelete, editID, nonEditableRow };
     const renderer = getItemRenderer(props);
     return (
         <DataTable

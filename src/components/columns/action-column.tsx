@@ -3,7 +3,7 @@ import { TableCell } from '../elements/';
 import { withHeader } from './with-header';
 
 
-const ActionColumn = withHeader<DT.ActionColumnProps<any>>(({ item, onAction, children, cellClassName, ...attrs }) => {
+const ActionColumn = withHeader<FlexTable.ActionColumnProps<any>>(({ item, onAction, children, cellClassName, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
     
     return (
