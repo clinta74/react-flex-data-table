@@ -61,7 +61,7 @@ function getSaveHandler<T> (props: FlexTable.FormProps<T>) {
         if (validationResult.success) {
             onSave(item);
         } else {
-            !!onValidation && onValidation(validationResult.messages);
+            !!onValidation && onValidation(validationResult.results);
         }
     } else {
         onSave(item);
@@ -79,7 +79,7 @@ export function EditableForm<T> (props: FlexTable.FormProps<T>) {
     return (
         <TableRow className='editing'>
             {combineChildren(children,
-                <TableCell className='dt-shrink-column'>
+                <TableCell className='ft-shrink-column'>
                     <div className='btn-group'>
                         <a className='btn btn-outline-secondary saveBtn' onClick={() => getSaveHandler(props)}>
                             <FontAwesomeIcon className="text-primary" icon={faSave} />
@@ -128,7 +128,7 @@ const ActionColumn = withHeader<ActionColumnProps<any>>(({ item, onRender, child
         return null;
     }
     return (
-        <TableCell className='dt-shrink-column'>
+        <TableCell className='ft-shrink-column'>
             <div className="btn-group">
                 <a className={classNames('btn btn-outline-secondary editBtn', { disabled: isEditing })} onClick={() => onEdit(getObjectByNamespace(idProperty, item))}>
                     <FontAwesomeIcon className="text-primary" icon={faPencilAlt} />

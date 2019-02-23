@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 
 const TableRow = ({ children, className, ...attrs }: FlexTable.Element) => {
-    const rowClassName = classNames(className, 'tr', {'dt-action-item': typeof(attrs.onClick) === 'function'});
+    const rowClassName = classNames(className, 'tr', {'ft-action-item': typeof(attrs.onClick) === 'function'});
     return (
         <div className={rowClassName} onClick={attrs.onClick} {...attrs}>
             {children}

@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 
 const Table = ({ children, className, ...attrs }: FlexTable.Element) => (
-    <div className={ classNames(className, 'vf-data-table') } { ...attrs }>
+    <div className={ classNames(className, 'flex-table') } { ...attrs }>
         { children }
     </div>
 );

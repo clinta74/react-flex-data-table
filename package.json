@@ -1,9 +1,14 @@
 {
-  "name": "react-flex-table",
-  "version": "1.0.0",
+  "name": "react-flexbox-table",
+  "version": "0.1.1",
   "description": "A flexbox table for react.",
-  "main": "index.js",
+  "main": "./dist/lib/index.js",
   "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "npx tsc --pretty",
+    "build:css" : "npx node-sass src/sass/ --output dist/css",
+    "clean": "npx rimraf dist",
+    "prepare": "npm run clean && npm run build",
     "test": "jest"
   },
   "repository": {
@@ -17,19 +22,21 @@
     "grid"
   ],
   "author": "Clint Andrews",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/clinta74/react-flex-table/issues"
   },
   "homepage": "https://github.com/clinta74/react-flex-table#readme",
+  "peerDependecies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
@@ -40,10 +47,21 @@
     "@types/react-dom": "^16.0.11",
     "@types/react-router-dom": "^4.3.1",
     "jest": "^24.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "ts-jest": "^23.10.5",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3333"
   },
   "jest": {
-    "preset": "ts-jest"
-  }
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ]
+  },
+  "files" : [
+    "dist",
+    "src"
+  ]
 }

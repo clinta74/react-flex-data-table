@@ -57,7 +57,7 @@ const renderBody = <T extends {}, ID = number>(items: T[],
             const groupHeader = grouping.groupHeader ? grouping.groupHeader(groupedItems[group]) : group
 
             return [
-                <TableRow className={"dt-group-row"} key={"grouprow_" + group}>
+                <TableRow className={"ft-group-row"} key={"grouprow_" + group}>
                     <TableCell>
                         {groupHeader}
                     </TableCell>

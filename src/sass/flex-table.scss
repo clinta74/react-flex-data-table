@@ -1,5 +1,5 @@
 ﻿@import "variables";
-.vf-data-table {
+.flex-table {
     width: 100%;
     background-color: $base-background-color;
     border-top: 1px solid $border-color;
@@ -14,7 +14,7 @@
         background-color: darken($base-background-color, .5%);
     }
     th,
-    .th, 
+    .th,
     td,
     .td {
         padding: 0.75em 1em;
@@ -36,7 +36,7 @@
     col.minimal {
         width: 1px;
     }
-    .dt-action-item {
+    .ft-action-item {
         cursor: pointer;
         &:hover {
             background-color: $hover-background-color !important;
@@ -50,7 +50,7 @@
     }
 }
 
-div.vf-data-table {
+div.flex-table {
     .tbody {
         position: relative;
         z-index: 2;
@@ -61,7 +61,7 @@ div.vf-data-table {
             &.active {
                 z-index: 10;
             }
-            &.dt-group-row {
+            &.ft-group-row {
                 background-color: darken($base-background-color, 3%);
                 font-weight: 600;
             }
@@ -95,7 +95,7 @@ div.vf-data-table {
     .th {
         flex-grow: 1;
         box-sizing: border-box;
-        &.dt-shrink-column {
+        &.ft-shrink-column {
             flex-grow: 0;
             .btn {
                 min-width: 40px;
@@ -105,7 +105,7 @@ div.vf-data-table {
     [class*="col-"] {
         margin: 0;
     }
-    &.dt-limited-body {
+    &.ft-limited-body {
         >.thead .tr,
         >.tfoot .tr {
             margin-right: 17px;

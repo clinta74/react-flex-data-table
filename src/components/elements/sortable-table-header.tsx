@@ -22,7 +22,7 @@ const sortIconMap = {
 }
 
 export const SortableTableHeader = (props: SortableTableHeaderProps) =>
-    <div onClick={() => props.onClick(props.name)} className="d-flex justify-content-between dt-sort-column">
+    <div onClick={() => props.onClick(props.name)} className="d-flex justify-content-between ft-sort-column">
         <div>{props.title}</div>
         <div>
             <FontAwesomeIcon icon={sortIconMap[props.sort]} />
