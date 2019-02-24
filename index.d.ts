@@ -147,7 +147,7 @@ declare namespace FlexTable {
 
     interface BoundColumnProps<T> extends ColumnProps<T> {
         binding: ((item: T) => string) | string;
-        formatter?: (value: T) => any;
+        formatter?: (value: T) => string;
         children?: never;
     }
 
@@ -198,4 +198,8 @@ declare module 'react-flexbox-table' {
     export type IEditableTable<ID> = FlexTable.Editable<ID>;
 
     export type IForm<T> = FlexTable.Form<T>;
+
+    export type IValidationTest<T, M> = FlexTable.ValidationTest<T, M>;
+
+    export type SimpleValiadtionTest<M> = IValidationTest<string, {item: M, items: M[]}>
 }

@@ -32,8 +32,8 @@ type BoundColumnFunc = (params: FlexTable.BoundColumnProps<any>) => JSX.Element;
 
 
 export const BoundColumn: BoundColumnFunc = ({ item, binding, formatter, ...attrs }) => {
-    const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) : binding(item)
+    const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : binding(item)
     return (
-        <CustomColumn {...attrs} onRender={getValue(formatter, value)} />
+        <CustomColumn {...attrs} onRender={() => getValue(formatter, value)} />
     );
 };

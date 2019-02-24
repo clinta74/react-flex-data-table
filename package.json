@@ -1,8 +1,9 @@
 {
   "name": "react-flexbox-table",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A flexbox table for react.",
   "main": "./dist/lib/index.js",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "npm run build:js && npm run build:css",
     "build:js": "npx tsc --pretty",
