@@ -2,7 +2,7 @@
 import { TableCell } from '../elements';
 import classNames from 'classnames';
 
-const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...attrs })=> {
+export const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...attrs })=> {
     const { cellClassName, isVisible, onSubTableRender} = props;
     const { item, className } = attrs;
     const newCellClassName = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
@@ -17,5 +17,3 @@ const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...attrs })
         return null;
     }
 };
-
-export default SubTable;

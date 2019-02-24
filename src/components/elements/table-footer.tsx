@@ -2,10 +2,8 @@
 import classNames from 'classnames';
 
 
-const TableFooter = ({ children, className, ...attrs }: FlexTable.Element) => (
+export const TableFooter = ({ children, className, ...attrs }: FlexTable.Element) => (
     <div className={ classNames(className, 'tfoot') } { ...attrs }>
         { children }
     </div>
 );
-
-export default TableFooter;

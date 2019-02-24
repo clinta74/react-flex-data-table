@@ -12,7 +12,7 @@ const handler = (f: AnchorClickEventHandler | undefined) => (e: AnchorClickEvent
     f && f(e);
 };
 
-const AddButton = ({ onClick, className, children, ...attrs }: AddButtonProps) => (
+export const AddButton = ({ onClick, className, children, ...attrs }: AddButtonProps) => (
     <div className="bg-light">
         <a className={classNames('btn', 'btn-outline-secondary', 'btn-block', className)} onClick={handler(onClick)} { ...attrs }>
             <FontAwesomeIcon icon={faPlus} />
@@ -20,4 +20,3 @@ const AddButton = ({ onClick, className, children, ...attrs }: AddButtonProps) =
     </div>
 );
 
-export default AddButton;

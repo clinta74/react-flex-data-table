@@ -3,7 +3,7 @@ import { TableCell } from '../elements/';
 import { withHeader } from './with-header';
 
 
-const ActionColumn = withHeader<FlexTable.ActionColumnProps<any>>(({ item, onAction, children, cellClassName, ...attrs }) => {
+export const ActionColumn = withHeader<FlexTable.ActionColumnProps<any>>(({ item, onAction, children, cellClassName, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
     
     return (
@@ -14,5 +14,3 @@ const ActionColumn = withHeader<FlexTable.ActionColumnProps<any>>(({ item, onAct
         </TableCell>
     )
 });
-
-export default ActionColumn;

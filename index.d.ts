@@ -64,7 +64,7 @@ declare namespace FlexTable {
         onClick?: RowOnClickHandler;
     }
 
-    type DataTableProps<T, ID = number> = TableElement<T, ID> & {
+    type DataTableProps<T, ID> = TableElement<T, ID> & {
         readonly header?: TableRenderer<T>;
         readonly footer?: TableRenderer<T>;
         readonly itemRenderer?: RowRenderer<T>;
@@ -83,7 +83,7 @@ declare namespace FlexTable {
     type FormRenderHandler<T> = (props: Item<T>) => JSX.Element;
 
     type EditableTableProps<ID, T> = EditableTable<ID, T> & 
-        DataTableProps<T> & {
+        DataTableProps<T, ID> & {
         form: FormRenderHandler<T>;
         getId: (item: T) => ID;
         nonEditableRow?: NonEditableRowHandler;
@@ -126,8 +126,8 @@ declare namespace FlexTable {
     // ----------------------------------------------------------------------
 
     type Renderer = () => React.ReactElement<any>;
-    type ColumnRenderer<T> = <R extends ItemElement<T>>(item: any) => React.ReactElement<R> | string;
-    type RowRenderer<T> = <R extends ItemElement<T>>(item: any, 
+    type ColumnRenderer<T> = <R extends ItemElement<T>>(item: T) => React.ReactElement<R> | string;
+    type RowRenderer<T> = <R extends ItemElement<T>>(item: T, 
         columns: React.ReactElement<R>[], 
         row: RowProps, 
         defaultRenderer?: () => React.ReactElement<T>) => React.ReactElement<T>;
@@ -146,7 +146,7 @@ declare namespace FlexTable {
     }
 
     interface BoundColumnProps<T> extends ColumnProps<T> {
-        binding: ((item: T) => T) | string;
+        binding: ((item: T) => string) | string;
         formatter?: (value: T) => any;
         children?: never;
     }
@@ -175,7 +175,7 @@ declare module 'react-flexbox-table' {
 
     export function CustomColumn<T>(props: FlexTable.CustomColumnProps<T>): JSX.Element;
 
-    export function DataTable<T>(props: FlexTable.DataTableProps<T>): JSX.Element;
+    export function DataTable<T, ID>(props: FlexTable.DataTableProps<T, ID>): JSX.Element;
 
     export function LinkColumn<T>(props: FlexTable.LinkColumnProps<T>): JSX.Element;
 
@@ -194,4 +194,8 @@ declare module 'react-flexbox-table' {
     export function TableHeader(_a: any): any;
 
     export function TableRow(_a: any): any;
+
+    export type IEditableTable<ID> = FlexTable.Editable<ID>;
+
+    export type IForm<T> = FlexTable.Form<T>;
 }

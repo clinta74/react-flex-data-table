@@ -43,7 +43,7 @@ const getColumnHeaders = (children: FlexTable.ColumnType<any>[]) => (
 
 // - Rendering
 
-const renderBody = <T extends {}, ID = number>(items: T[],
+const renderBody = <T extends {}, ID>(items: T[],
     children: React.ReactElement<any>[],
     itemRenderer: FlexTable.RowRenderer<any> = renderRow,
     grouping: FlexTable.Groupable<T, ID>,
@@ -113,15 +113,9 @@ type DataTableState = {}
  * @param header Feader render function.
  * @param footer Footer render function.
  */
-export class DataTable<T> extends React.PureComponent<FlexTable.DataTableProps<T>, DataTableState> {
-    constructor(props: FlexTable.DataTableProps<T>) {
+export class DataTable<T, ID> extends React.PureComponent<FlexTable.DataTableProps<T, ID>, DataTableState> {
+    constructor(props: FlexTable.DataTableProps<T, ID>) {
         super(props);
-
-        this.state = {
-            currentPage: 0,
-            itemsPerPage: props.itemsPerPage || 50,
-            visiblePages: 6
-        }
     }
 
     handlePageChanged = (newPage: number) => {
@@ -129,7 +123,7 @@ export class DataTable<T> extends React.PureComponent<FlexTable.DataTableProps<T
     }
 
     render() {
-        const { items, children, className, header, footer, footerClassName, itemRenderer, groupOn, groupHeader, row, itemsPerPage, ...attrs } = this.props;
+        const { items, children, className, header, footer, footerClassName, itemRenderer, groupOn, groupHeader, row, ...attrs } = this.props;
 
         if (items) {
             const columns = Array.isArray(children) ? children as FlexTable.ColumnType<T>[] : [children] as FlexTable.ColumnType<T>[];

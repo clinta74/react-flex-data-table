@@ -1,8 +1,9 @@
-export { default as AddButton } from './add-button';
-export { default as TableBody } from './table-body';
-export { default as TableCell } from './table-cell';
-export { default as TableFooter } from './table-footer';
-export { default as TableHeaderCell } from './table-header-cell';
-export { default as TableHeader } from './table-header';
-export { default as TableRow } from './table-row';
-export { default as Table } from './table';
+export { AddButton } from './add-button';
+export { TableBody } from './table-body';
+export { TableCell } from './table-cell';
+export { TableFooter } from './table-footer';
+export { TableHeaderCell } from './table-header-cell';
+export { TableHeader } from './table-header';
+export { TableRow } from './table-row';
+export { Table } from './table';
+export { SortableTableHeader, SortDirection } from './sortable-table-header';

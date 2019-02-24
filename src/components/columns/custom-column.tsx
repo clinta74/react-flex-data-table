@@ -3,7 +3,7 @@ import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 
 
-const CustomColumn = withHeader<FlexTable.CustomColumnProps<any>>(({ item, onRender, children, onAction, cellClassName, hideHeader, ...attrs }) => {
+export const CustomColumn = withHeader<FlexTable.CustomColumnProps<any>>(({ item, onRender, children, onAction, cellClassName, hideHeader, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
 
     return (
@@ -12,5 +12,3 @@ const CustomColumn = withHeader<FlexTable.CustomColumnProps<any>>(({ item, onRen
         </TableCell>
     )
 });
-
-export default CustomColumn;

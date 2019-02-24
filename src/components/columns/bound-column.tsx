@@ -2,6 +2,7 @@
 import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { getObjectByNamespace } from '../../util/'
+import { CustomColumn } from './custom-column';
 
 type Formatter = ((value: any) => any) | undefined;
 
@@ -17,14 +18,22 @@ const getValue = (formatter: Formatter, value: any) => formatter ? formatter(val
  * @param {any} { item, binding, formatter, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-const BoundColumn = withHeader<FlexTable.BoundColumnProps<any>>(({ item, binding, formatter, children, cellClassName, hideHeader, ...attrs }) => {
-    const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
+// export const BoundColumn = withHeader<FlexTable.BoundColumnProps<any>>(({ item, binding, formatter, children, cellClassName, hideHeader, ...attrs }) => {
+//     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
+//     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) : binding(item)
+//     return (
+//         <TableCell cellClassName={className} {...attrs}>
+//             {getValue(formatter, value)}
+//         </TableCell>
+//     );
+// });
+
+type BoundColumnFunc = (params: FlexTable.BoundColumnProps<any>) => JSX.Element;
+
+
+export const BoundColumn: BoundColumnFunc = ({ item, binding, formatter, ...attrs }) => {
     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) : binding(item)
     return (
-        <TableCell cellClassName={className} {...attrs}>
-            {getValue(formatter, value)}
-        </TableCell>
+        <CustomColumn {...attrs} onRender={getValue(formatter, value)} />
     );
-});
-
-export default BoundColumn;
+};
