@@ -21,7 +21,7 @@ const combineChildren = (children: any, newNode: any) => React.Children.toArray(
 // - Rendering
 function getItemRenderer<ID, T>({ form, getId, isEditing, editID, row }: FlexTable.EditableTableProps<ID, T>) {
     const FormComponent = form;
-    return (item: any, defaultRenderer: any) => {
+    return (item: any, children: React.ReactElement<any>[], row: FlexTable.RowProps, defaultRenderer: any) => {
         return isEditing && getId(item) === editID ?
             <FormComponent item={item} /> :
             defaultRenderer();
