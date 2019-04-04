@@ -5,9 +5,9 @@ import { validateAll } from '../../validation';
 import { DataTable } from './data-table';
 import { withHeader } from '../columns/with-header';
 import { TableRow, TableCell, AddButton } from '../elements';
-import { getObjectByNamespace } from '../../util/get-object-by-namespace';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faSave, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -51,10 +51,10 @@ function getFooter<ID, T>(props: FlexTable.EditableTableProps<ID, T>) {
 
 // - Saving items
 
-function getSaveHandler<T> (props: FlexTable.FormProps<T>) {
+function getSaveHandler<T>(props: FlexTable.FormProps<T>) {
     const { onSave, items, getState, onValidation, validationTests } = props;
     const item = JSON.parse(JSON.stringify(getState()));
-    
+
     if (!!validationTests) {
         const validationResult = validateAll(validationTests, { item, items });
 
@@ -73,7 +73,7 @@ function getSaveHandler<T> (props: FlexTable.FormProps<T>) {
 // Components
 // ----------------------------------------------------------------------
 
-export function EditableForm<T> (props: FlexTable.FormProps<T>) {
+export function EditableForm<T>(props: FlexTable.FormProps<T>) {
     const { children, onCancel } = props;
 
     return (
@@ -93,7 +93,7 @@ export function EditableForm<T> (props: FlexTable.FormProps<T>) {
     );
 };
 
-export function EditableTable<ID, T> (props: FlexTable.EditableTableProps<ID, T>) {
+export function EditableTable<ID, T>(props: FlexTable.EditableTableProps<ID, T>) {
     const { children, getId, isEditing, onEdit, onDelete, disableInsert, editID, row, nonEditableRow, footerClassName, form, insertItem, ...attrs } = props;
     const attr = { getId, isEditing, onEdit, onDelete, editID, nonEditableRow };
     const renderer = getItemRenderer(props);
@@ -103,38 +103,47 @@ export function EditableTable<ID, T> (props: FlexTable.EditableTableProps<ID, T>
             footer={() => getFooter(props)}
             footerClassName={classNames({ 'editing': isEditing && editID === null }, footerClassName)}
             row={row}
-            { ...attrs }>
+            {...attrs}>
 
             {combineChildren(children,
                 <ActionColumn hideHeader {...attr} />
-                ) as FlexTable.TableChildNodes<T>}
+            ) as FlexTable.TableChildNodes<T>}
         </DataTable>
     );
 };
 
-interface ActionColumn<T> extends FlexTable.ColumnProps<T> {
+interface ActionColumn<ID, T> extends FlexTable.ColumnProps<T> {
     nonEditableRow?: FlexTable.NonEditableRowHandler,
-    idProperty: string;
+    itemId: ID,
     children?: never;
 }
 
-type ActionColumnProps<T> = ActionColumn<T> & FlexTable.Editable<T> & FlexTable.Updatable<T>
+type ActionColumnProps<T, ID> =
+    FlexTable.ColumnProps<T> &
+    ActionColumn<T, ID> &
+    FlexTable.Editable<T> &
+    FlexTable.Updatable<T> & {
+        nonEditableRow?: FlexTable.NonEditableRowHandler,
+        getId: (item: T) => ID,
+        children?: never;
+    };
 
-const ActionColumn = withHeader<ActionColumnProps<any>>(({ item, onRender, children, onAction, cellClassName, hideHeader, ...attrs }) => {
+const ActionColumn = withHeader<ActionColumnProps<unknown, {}>>(({ item, onRender, children, onAction, cellClassName, hideHeader, getId, ...attrs }) => {
     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
-    const { nonEditableRow, idProperty, onDelete, isEditing, onEdit } = attrs;
+    const { nonEditableRow, onDelete, isEditing, onEdit } = attrs;
 
-    if(nonEditableRow && nonEditableRow(item)) {
+    if (nonEditableRow && nonEditableRow(item)) {
         return null;
     }
+    const itemId = getId(item);
     return (
-        <TableCell className='ft-shrink-column'>
+        <TableCell className={classNames('ft-shrink-column', className)}>
             <div className="btn-group">
-                <a className={classNames('btn btn-outline-secondary editBtn', { disabled: isEditing })} onClick={() => onEdit(getObjectByNamespace(idProperty, item))}>
+                <a className={classNames('btn btn-outline-secondary editBtn', { disabled: isEditing })} onClick={() => onEdit(itemId)}>
                     <FontAwesomeIcon className="text-primary" icon={faPencilAlt} />
                 </a>
                 {onDelete &&
-                    <a className={classNames('btn btn-outline-secondary deleteBtn', { disabled: isEditing })} onClick={() => onDelete(getObjectByNamespace(idProperty, item))}>
+                    <a className={classNames('btn btn-outline-secondary deleteBtn', { disabled: isEditing })} onClick={() => onDelete(itemId)}>
                         <FontAwesomeIcon className="text-danger" icon={faTrashAlt} />
                     </a>}
             </div>
