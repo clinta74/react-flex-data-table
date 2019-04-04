@@ -33,14 +33,6 @@ const getColumnHeaders = (children: FlexTable.ColumnType<any>[]) => (
     </TableRow>
 );
 
-// var groupBy = function<T, ID>(xs: T[], key: (x: T) => ID) {
-//     return xs.reduce(function (rv, x) {
-//         let kv = key(x);
-//         (rv[kv] = rv[kv] || []).push(x);
-//         return rv;
-//     }, {});
-// };
-
 // - Rendering
 
 const renderBody = <T extends {}, ID>(items: T[],
