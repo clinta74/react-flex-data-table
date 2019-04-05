@@ -5,7 +5,7 @@
   "main": "./dist/lib/index.js",
   "types": "./index.d.ts",
   "scripts": {
-    "start": "npx parcel example/src/index.html --out-dir example/dist --open --port 3000",
+    "start": "npx parcel example/src/index.html --out-dir example/dist --open",
     "build": "npm run build:js && npm run build:css",
     "build:js": "npx tsc --pretty",
     "build:css": "npx node-sass src/sass/ --output dist/css",
