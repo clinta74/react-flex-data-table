@@ -1,4 +1,4 @@
-import { FlexTable } from './index';
+import { FlexTable } from './src/index';
 declare module 'react-flexbox-table' {
     export function ActionColumn<T>(props: FlexTable.ActionColumnProps<T>): JSX.Element;
 
