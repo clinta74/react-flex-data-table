@@ -23,7 +23,8 @@ const data = [
 
 const MyTable
     return (
-        <FlexTable.DataTable
+        <FlexTable.DataTable items={data}>
+        </FlexTable.DataTable>
     );
 }
 ....

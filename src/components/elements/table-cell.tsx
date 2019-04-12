@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import classNames from 'classnames';
+import { FlexTable } from '../..';
 
 
 export const TableCell = ({ children, className, cellClassName, item, hideHeader, ...attrs }: FlexTable.Header & FlexTable.Element & FlexTable.Item<any>) => {
