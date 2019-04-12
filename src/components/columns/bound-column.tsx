@@ -3,6 +3,7 @@ import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { getObjectByNamespace } from '../../util/'
 import { CustomColumn } from './custom-column';
+import { FlexTable } from '../..';
 
 type Formatter = ((value: any) => any) | undefined;
 

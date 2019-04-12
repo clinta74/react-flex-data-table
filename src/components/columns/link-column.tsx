@@ -2,6 +2,7 @@
 import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { Link } from 'react-router-dom';
+import { FlexTable } from '../..';
 
 
 

@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 import { TableCell } from '../elements/';
 import { withHeader } from './with-header';
+import { FlexTable } from '../..';
 
 
 export const ActionColumn = withHeader<FlexTable.ActionColumnProps<any>>(({ item, onAction, children, cellClassName, ...attrs }) => {
