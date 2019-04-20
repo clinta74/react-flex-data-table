@@ -7,6 +7,7 @@ import { withHeader } from '../columns/with-header';
 import { TableRow, TableCell, AddButton } from '../elements';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBan, faSave, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { FlexTable } from '../..';
 
 
 

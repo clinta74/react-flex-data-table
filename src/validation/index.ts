@@ -1,4 +1,6 @@
-﻿const sumValidationResult = <M>(result1: FlexTable.ValidationResult<M>, result2: FlexTable.ValidationResult<M>) => {
+﻿import { FlexTable } from "..";
+
+const sumValidationResult = <M>(result1: FlexTable.ValidationResult<M>, result2: FlexTable.ValidationResult<M>) => {
     const success = result1.success && result2.success;
     return ({
         success,

@@ -1,4 +1,5 @@
 import { validate, validateAll } from '../index';
+import { FlexTable } from '../..';
 
 type ValidationMessage = { 
     message: string,

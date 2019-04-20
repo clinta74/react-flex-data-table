@@ -31,7 +31,7 @@ export class App extends React.Component<AppProps, AppState> {
             <section className="container">
                 <h2>Filter Bar Example</h2>
                 <div>
-                    <FlexTable.DataTable items={data} footer={(items: MyData[]) => <CustomFooter items={items} moreData={{}} />} >
+                    <FlexTable.DataTable items={data} >
                         <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3"/>
                         <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3"/>
                         <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6"/>

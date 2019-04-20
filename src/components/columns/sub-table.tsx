@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { TableCell } from '../elements';
 import classNames from 'classnames';
+import { FlexTable } from '../..';
 
 export const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...attrs })=> {
     const { cellClassName, isVisible, onSubTableRender, item } = props;

@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { groupBy } from 'lodash';
 import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHeaderCell, TableCell } from '../elements';
+import { FlexTable } from '../..';
 
 
 //

@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import classNames from 'classnames';
+import { FlexTable } from '../..';
 
 
 export const TableRow = ({ children, className, ...attrs }: FlexTable.Element) => {

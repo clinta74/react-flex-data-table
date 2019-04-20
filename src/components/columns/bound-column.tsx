@@ -3,10 +3,11 @@ import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { getObjectByNamespace } from '../../util/'
 import { CustomColumn } from './custom-column';
+import { FlexTable } from '../..';
 
-type Formatter = ((value: any) => any) | undefined;
+type Formatter = ((value: unknown) => React.ReactNode) | undefined;
 
-const getValue = (formatter: Formatter, value: any) => formatter ? formatter(value) : value;
+const getValue = (formatter: Formatter, value: unknown) => formatter ? formatter(value) : value;
 
 /**
  * A bound column represents a table column which can 'bind' to a property of the items
@@ -18,10 +19,10 @@ const getValue = (formatter: Formatter, value: any) => formatter ? formatter(val
  * @param {any} { item, binding, formatter, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-type BoundColumnFunc = (params: FlexTable.BoundColumnProps<unknown>) => JSX.Element;
+type BoundColumnFunc<T> = (params: FlexTable.BoundColumnProps<T>) => JSX.Element;
 
 
-export const BoundColumn: BoundColumnFunc = ({ item, binding, formatter, ...attrs }) => {
+export const BoundColumn: BoundColumnFunc<any> = ({ item, binding, formatter, ...attrs }) => {
     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : binding(item)
     return (
         <CustomColumn {...attrs} onRender={() => getValue(formatter, value)} />
