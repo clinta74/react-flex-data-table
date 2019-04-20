@@ -18,17 +18,7 @@ const getValue = (formatter: Formatter, value: any) => formatter ? formatter(val
  * @param {any} { item, binding, formatter, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-// export const BoundColumn = withHeader<FlexTable.BoundColumnProps<any>>(({ item, binding, formatter, children, cellClassName, hideHeader, ...attrs }) => {
-//     const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
-//     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) : binding(item)
-//     return (
-//         <TableCell cellClassName={className} {...attrs}>
-//             {getValue(formatter, value)}
-//         </TableCell>
-//     );
-// });
-
-type BoundColumnFunc = (params: FlexTable.BoundColumnProps<any>) => JSX.Element;
+type BoundColumnFunc = (params: FlexTable.BoundColumnProps<unknown>) => JSX.Element;
 
 
 export const BoundColumn: BoundColumnFunc = ({ item, binding, formatter, ...attrs }) => {
