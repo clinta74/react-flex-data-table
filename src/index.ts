@@ -153,7 +153,6 @@ export declare namespace FlexTable {
 
     interface ActionColumnProps<T> extends ColumnProps<T> {
         onAction: ActionHandler;
-        children?: never;
     }
 
     interface BoundColumnProps<T> extends ColumnProps<T> {
@@ -170,7 +169,6 @@ export declare namespace FlexTable {
 
     interface LinkColumnProps<T> extends ColumnProps<T> {
         getLink: (item: T) => string;
-        children?: never;
     }
 
     interface SubTableProps<T> extends ColumnProps<T> {
