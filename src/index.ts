@@ -141,7 +141,7 @@ export declare namespace FlexTable {
         columns: React.ReactElement<R>[], 
         row: RowProps, 
         defaultRenderer?: () => React.ReactElement<T>) => React.ReactElement<T>;
-    type TableRenderer<T> = (<T>(items: T[]) => React.ReactElement<T> | null) | false;
+    type TableRenderer<T> = (<R extends ItemElement<T>>(items: T[]) => React.ReactElement<R> | null) | false;
 
     //
     // Column props
