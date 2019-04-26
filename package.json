@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox-table",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "A flexbox table for react.",
   "main": "./dist/lib/index.js",
   "types": "./index.d.ts",

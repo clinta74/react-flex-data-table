@@ -13,8 +13,8 @@ const handler = (f: AnchorClickEventHandler | undefined) => (e: AnchorClickEvent
 };
 
 export const AddButton = ({ onClick, className, children, ...attrs }: AddButtonProps) => (
-    <div className="bg-light">
-        <a className={classNames('btn', 'btn-outline-secondary', 'btn-block', className)} onClick={handler(onClick)} { ...attrs }>
+    <div className="">
+        <a className={classNames('btn', 'btn-outline-secondary', 'btn-block bg-light', className)} onClick={handler(onClick)} { ...attrs }>
             <FontAwesomeIcon icon={faPlus} />
         </a>
     </div>
