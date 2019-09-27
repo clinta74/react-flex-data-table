@@ -89,9 +89,6 @@ const renderRow = (item: object, columns: React.ReactElement<any>[], row: FlexTa
         </TableRow>);
 }
 
-
-type DataTableState = {}
-
 //
 // Components
 // ----------------------------------------------------------------------
@@ -106,13 +103,9 @@ type DataTableState = {}
  * @param header Feader render function.
  * @param footer Footer render function.
  */
-export class DataTable<T, ID> extends React.PureComponent<FlexTable.DataTableProps<T, ID>, DataTableState> {
+export class DataTable<T, ID> extends React.PureComponent<FlexTable.DataTableProps<T, ID>> {
     constructor(props: FlexTable.DataTableProps<T, ID>) {
         super(props);
-    }
-
-    handlePageChanged = (newPage: number) => {
-        this.setState({ currentPage: newPage });
     }
 
     render() {

@@ -19,10 +19,8 @@ const getValue = (formatter: Formatter, value: unknown) => formatter ? formatter
  * @param {any} { item, binding, formatter, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-type BoundColumnFunc<T> = (params: FlexTable.BoundColumnProps<T>) => JSX.Element;
 
-
-export const BoundColumn: BoundColumnFunc<any> = ({ item, binding, formatter, ...attrs }) => {
+export const BoundColumn: React.FunctionComponent<FlexTable.BoundColumnProps<any>> = ({ item, binding, formatter, ...attrs }) => {
     const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : binding(item)
     return (
         <CustomColumn {...attrs} onRender={() => getValue(formatter, value)} />

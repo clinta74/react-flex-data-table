@@ -28,14 +28,13 @@ const data = [
 
 const MyTable
     return (
-                <FlexTable.DataTable items={data} >
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3"/>
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3"/>
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6"/>
-                        <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.lastName === 'Andrews'}
-                                    onSubTableRender={(item: MyData) => <ColorList color={item.colors}/>} />
-                    </FlexTable.DataTable>
+        <FlexTable.DataTable items={data} >
+            <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3"/>
+            <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3"/>
+            <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6"/>
+            <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.lastName === 'Andrews'}
+                        onSubTableRender={(item: MyData) => <ColorList color={item.colors}/>} />
+        </FlexTable.DataTable>
     );
 }
 ....
-
