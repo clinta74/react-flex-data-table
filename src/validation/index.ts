@@ -25,7 +25,7 @@ const getSuccessResult = <M>() => {
 const validateAll = <M, P>(tests: FlexTable.ValidationTest<M, P>[], params: P) => {
     const testResults = tests.reduce((prev, next) => {
         return sumValidationResult<M>(prev as FlexTable.ValidationResult<M>, validate<M, P>(next, params))
-    }, getSuccessResult());
+    }, getSuccessResult<M>());
 
     return testResults;
 };

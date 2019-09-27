@@ -157,7 +157,7 @@ export declare namespace FlexTable {
 
     interface BoundColumnProps<T> extends ColumnProps<T> {
         binding: ((item: T) => React.ReactNode) | string;
-        formatter?: (value: unknown) => string;
+        formatter?: (value: unknown) => React.ReactNode;
         children?: never;
     }
 
