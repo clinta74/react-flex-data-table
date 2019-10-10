@@ -6,7 +6,7 @@ its columns, rows, and header. Support for inline editing, insert, and deletion 
 
 ### Installation
 ```
-npm i react-flexgrid-table
+npm i react-flexbox-table
 ```
 ### Quick Start
 There are to main components for rendering a table.  DataTable is the basic render a table component that produces rows of defined columns with optional headers.
