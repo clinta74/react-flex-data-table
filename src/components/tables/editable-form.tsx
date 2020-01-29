@@ -12,17 +12,19 @@ export function EditableForm<T>(props: FlexTable.FormProps<T>) {
 
     return (
         <TableRow className='editing'>
-            {combineChildren(children,
-                <TableCell className='ft-shrink-column'>
-                    <div className='btn-group'>
-                        <a className='btn btn-outline-secondary saveBtn' onClick={() => getSaveHandler(props)}>
-                            <FontAwesomeIcon className="text-primary" icon={faSave} />
-                        </a>
-                        <a className='btn btn-outline-secondary cancelBtn' onClick={onCancel}>
-                            <FontAwesomeIcon className="text-danger" icon={faBan} />
-                        </a>
-                    </div>
-                </TableCell>) as FlexTable.FormChildNodes}
+            {
+                combineChildren(children,
+                    <TableCell className='ft-shrink-column'>
+                        <div className='btn-group'>
+                            <a className='btn btn-outline-secondary saveBtn' onClick={() => getSaveHandler(props)}>
+                                <FontAwesomeIcon className="text-primary" icon={faSave} />
+                            </a>
+                            <a className='btn btn-outline-secondary cancelBtn' onClick={onCancel}>
+                                <FontAwesomeIcon className="text-danger" icon={faBan} />
+                            </a>
+                        </div>
+                    </TableCell>) as FlexTable.FormChildNodes
+            }
         </TableRow>
     );
 };

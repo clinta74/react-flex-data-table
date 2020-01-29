@@ -35,4 +35,6 @@ declare module 'react-flexbox-table' {
     export type SimpleValiadtionTest<M> = IValidationTest<string, {item: M, items: M[]}>
 
     export type TableRenderer<T> = FlexTable.TableRenderer<T>;
+
+    export type FormRenderHandler<T> = FlexTable.FormRenderHandler<T>;
 }

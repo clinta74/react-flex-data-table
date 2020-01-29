@@ -5,7 +5,7 @@ import * as columns from './components/columns';
 export default {
     ...components,
     ...elements,
-    ...columns
+    ...columns,
 };
 
 export declare namespace FlexTable {
@@ -84,13 +84,13 @@ export declare namespace FlexTable {
     }
 
     type FormProps<T, P = {}, M = {}> = Form<T> & {
-        getState: () => any;
+        getState: () => T;
         children?: FormChildNodes;
         validationTests?: ValidationTest<M, P>[];
         onValidation?: (messages: M[]) => void;
     }
 
-    type FormRenderHandler<T> = (props: Item<T>) => JSX.Element;
+    export type FormRenderHandler<T> = (props: Item<T>) => JSX.Element;
 
     type EditableTableProps<ID, T> = EditableTable<ID, T> & 
         DataTableProps<T, ID> & {
