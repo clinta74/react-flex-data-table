@@ -84,7 +84,7 @@ export class App extends React.Component<AppProps, AppState> {
                         <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3" />
                         <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3" />
                         <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6" />
-                        <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.lastName === 'Andrews'}
+                        <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.id === 2}
                             onSubTableRender={(item: MyData) => <ColorList color={item.colors} />} />
                     </FlexTable.DataTable>
                 </div>
