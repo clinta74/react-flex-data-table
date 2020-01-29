@@ -1,6 +1,6 @@
 {
-  "name": "react-filter-bar-example",
-  "description": "An example for the react-filter-bar",
+  "name": "react-flexbox-table-example",
+  "description": "An example for the react-flexbox-table",
   "author": "Clint Andrews",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-filter-bar": "file:../react-filter-bar",
+    "react-flexbox-table": "^1.0.2",
     "react-hot-loader": "^4.8.2"
   },
   "devDependencies": {
