@@ -18,8 +18,8 @@
     "@types/node": "^10.12.23",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
-    "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.12.2",
+    "node-sass": "^4.13.1",
+    "parcel-bundler": "^1.12.4",
     "sass": "^1.17.4",
     "typescript": "^3.3.3"
   }
