@@ -103,46 +103,40 @@ const renderRow = (item: object, columns: React.ReactElement<any>[], row: FlexTa
  * @param header Feader render function.
  * @param footer Footer render function.
  */
-export class DataTable<T, ID> extends React.PureComponent<FlexTable.DataTableProps<T, ID>> {
-    constructor(props: FlexTable.DataTableProps<T, ID>) {
-        super(props);
-    }
+export const DataTable = <T, ID>(props: FlexTable.DataTableProps<T, ID>) => {
+    const { items, children, className, header, footer, footerClassName, itemRenderer, groupOn, groupHeader, row, ...attrs } = props;
 
-    render() {
-        const { items, children, className, header, footer, footerClassName, itemRenderer, groupOn, groupHeader, row, ...attrs } = this.props;
+    if (items) {
+        const columns = Array.isArray(children) ? children as FlexTable.ColumnType<T>[] : [children] as FlexTable.ColumnType<T>[];
+        const renderColumnHeaders = hasAnyColumnHeaders(columns);
+        const renderHeader = header !== false && (header || renderColumnHeaders);
+        const renderFooter = !!footer;
+        const grouping = { groupOn, groupHeader };
+        const rowProps = row || {};
 
-        if (items) {
-            const columns = Array.isArray(children) ? children as FlexTable.ColumnType<T>[] : [children] as FlexTable.ColumnType<T>[];
-            const renderColumnHeaders = hasAnyColumnHeaders(columns);
-            const renderHeader = header !== false && (header || renderColumnHeaders);
-            const renderFooter = !!footer;
-            const grouping = { groupOn, groupHeader };
-            const rowProps = row || {};
+        return (
+            <>
+                <Table
+                    className={className}
+                    {...attrs}>
+                    {renderHeader &&
+                        <TableHeader>
+                            {header && header(items)}
+                            {renderColumnHeaders && getColumnHeaders(columns)}
+                        </TableHeader>}
 
-            return (
-                <>
-                    <Table
-                        className={className}
-                        {...attrs}>
-                        {renderHeader &&
-                            <TableHeader>
-                                {header && header(items)}
-                                {renderColumnHeaders && getColumnHeaders(columns)}
-                            </TableHeader>}
+                    <TableBody>
+                        {renderBody(items, columns, itemRenderer, grouping, rowProps)}
+                    </TableBody>
 
-                        <TableBody>
-                            {renderBody(items, columns, itemRenderer, grouping, rowProps)}
-                        </TableBody>
-
-                        {renderFooter &&
-                            <TableFooter className={footerClassName}>
-                                {footer && footer(items)}
-                            </TableFooter>}
-                    </Table>
-                </>
-            );
-        } else {
-            return null;
-        }
+                    {renderFooter &&
+                        <TableFooter className={footerClassName}>
+                            {footer && footer(items)}
+                        </TableFooter>}
+                </Table>
+            </>
+        );
+    } else {
+        return null;
     }
 };
