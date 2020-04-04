@@ -3,6 +3,7 @@ import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { Link } from 'react-router-dom';
 import { FlexTable } from '../..';
+import { CustomColumn } from '.';
 
 
 
@@ -18,14 +19,11 @@ import { FlexTable } from '../..';
  * @param {any} { item, getLink, children, cellClassName, hideHeader, ...attrs } 
  * @returns 
  */
-export const LinkColumn = withHeader<FlexTable.LinkColumnProps<unknown>>(({ item, getLink, children, cellClassName, hideHeader, ...attrs }) => {
-    const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
+export const LinkColumn = <T extends {}>({ item, getLink, children, cellClassName, hideHeader, ...attrs }: FlexTable.LinkColumnProps<T>) => {
+    const render = (item: T) => 
+        <Link to={getLink(item)}>
+            {children}
+        </Link>
 
-    return (
-        <TableCell cellClassName={className} {...attrs}>
-            <Link to={getLink(item)}>
-                {children}
-            </Link>
-        </TableCell>
-    )
-});
+    return <CustomColumn {...attrs} onRender={render} />
+};

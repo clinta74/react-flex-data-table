@@ -20,8 +20,8 @@ const getValue = (formatter: Formatter, value: unknown) => formatter ? formatter
  * @returns 
  */
 
-export const BoundColumn: React.FunctionComponent<FlexTable.BoundColumnProps<any>> = ({ item, binding, formatter, ...attrs }) => {
-    const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : binding(item)
+export const BoundColumn = <T extends {}>({ item, binding, formatter, ...attrs }: FlexTable.BoundColumnProps<T>) => {
+    const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : item && binding(item)
     return (
         <CustomColumn {...attrs} onRender={() => getValue(formatter, value)} />
     );

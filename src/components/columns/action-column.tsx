@@ -1,17 +1,17 @@
 ﻿import * as React from 'react';
-import { TableCell } from '../elements/';
-import { withHeader } from './with-header';
 import { FlexTable } from '../..';
+import { CustomColumn } from './custom-column';
 
 
-export const ActionColumn = withHeader<FlexTable.ActionColumnProps<unknown>>(({ item, onAction, children, cellClassName, ...attrs }) => {
-    const className = (cellClassName && typeof cellClassName === 'function') ? cellClassName(item) : cellClassName;
-    
-    return (
-        <TableCell cellClassName={className} { ...attrs }>
-            <a href='#' onClick={e => { e.preventDefault(); onAction(item, e); }}>
-                {children}
-            </a>
-        </TableCell>
-    )
-});
+export const ActionColumn = <T extends {}>({ item, onAction, children, cellClassName, ...attrs }: FlexTable.ActionColumnProps<T>) => {
+    const onClick: React.MouseEventHandler<HTMLAnchorElement> = event => {
+        event.preventDefault();
+        onAction(item, event);
+    }
+    const render = () =>
+        <a href='#' onClick={onClick}>
+            {children}
+        </a>
+
+    return <CustomColumn {...attrs} onRender={render} />
+};
