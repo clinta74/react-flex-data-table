@@ -16,10 +16,10 @@ import { CustomColumn } from '.';
  * 
  * The link is powered internally by react-router
  * 
- * @param {any} { item, getLink, children, cellClassName, hideHeader, ...attrs } 
+ * @param {any} { item, getLink, children, hideHeader, ...attrs } 
  * @returns 
  */
-export const LinkColumn = <T extends {}>({ item, getLink, children, cellClassName, hideHeader, ...attrs }: FlexTable.LinkColumnProps<T>) => {
+export const LinkColumn = <T extends {}>({ item, getLink, children, hideHeader, ...attrs }: FlexTable.LinkColumnProps<T>) => {
     const render = (item: T) => 
         <Link to={getLink(item)}>
             {children}
