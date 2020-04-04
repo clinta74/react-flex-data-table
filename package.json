@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox-table",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A flexbox table for react and Bootstrap 4 grid.",
   "main": "./dist/lib/index.js",
   "types": "./index.d.ts",
