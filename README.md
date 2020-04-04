@@ -38,3 +38,16 @@ const MyTable
     );
 }
 ....
+
+### Custom columns
+You can develope your own column types based by using the CustomColumn component using its onRender render property.
+``` javascript
+export const MyColumn = <T extends {}>({ item, children, cellClassName, hideHeader, ...attrs }: MyColumnProps<T>) => {
+    const render = (item: T) => 
+        <div>
+            {item}
+        </div>
+
+    return <CustomColumn {...attrs} onRender={render} />
+};
+```
