@@ -13,5 +13,5 @@ export const ActionColumn = <T extends {}>({ item, onAction, children, ...attrs 
             {children}
         </a>
 
-    return <CustomColumn {...attrs} onRender={render} />
+    return <CustomColumn {...attrs} item={item} onRender={render} />
 };

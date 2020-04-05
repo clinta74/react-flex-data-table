@@ -8,8 +8,8 @@ export const CustomColumn = withHeader(<T extends {}>({ item, onRender, children
     const onClickTableCell: React.MouseEventHandler<HTMLDivElement> = event => 
         (onAction && onAction(item, event));
     return (
-        <TableCell onClick={onClickTableCell} cellClassName={className} { ...attrs }>
-            {item && onRender(item)}
+        <TableCell onClick={onClickTableCell} cellClassName={className} item={item} { ...attrs }>
+            { item && onRender(item)}
         </TableCell>
     )
 });

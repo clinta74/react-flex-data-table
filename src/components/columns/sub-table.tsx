@@ -10,7 +10,7 @@ export const SubTable = <T extends {}>(props: FlexTable.SubTableProps<T>, { ...a
 
     if (item && isVisible(item)) {
         return (
-            <TableCell cellClassName={newCellClassName} className={classNames(className, 'dt-sub-table p-2')}>
+            <TableCell cellClassName={newCellClassName} item={item}  className={classNames(className, 'dt-sub-table p-2')}>
                 {onSubTableRender(item)}
             </TableCell>
         );

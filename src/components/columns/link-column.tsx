@@ -25,5 +25,5 @@ export const LinkColumn = <T extends {}>({ item, getLink, children, hideHeader, 
             {children}
         </Link>
 
-    return <CustomColumn {...attrs} onRender={render} />
+    return <CustomColumn {...attrs} item={item} onRender={render} />
 };

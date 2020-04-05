@@ -1,6 +1,4 @@
 ﻿import * as React from 'react';
-import { withHeader } from './with-header';
-import { TableCell } from '../elements';
 import { getObjectByNamespace } from '../../util/'
 import { CustomColumn } from './custom-column';
 import { FlexTable } from '../..';
@@ -20,9 +18,15 @@ const getValue = (formatter: Formatter, value: unknown) => formatter ? formatter
  * @returns 
  */
 
-export const BoundColumn = <T extends {}>({ item, binding, formatter, ...attrs }: FlexTable.BoundColumnProps<T>) => {
-    const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : item && binding(item)
+export const BoundColumn = <T extends {}>({ binding, formatter, ...attrs }: FlexTable.BoundColumnProps<T>) => {
+    const render = (item: T) => {
+        const value = typeof binding === 'string' ? getObjectByNamespace(binding, item) as string : binding(item);
+        return (
+        <>
+            {getValue(formatter, value)}
+        </>)
+    }
     return (
-        <CustomColumn {...attrs} onRender={() => getValue(formatter, value)} />
+        <CustomColumn {...attrs} onRender={render} />
     );
 };

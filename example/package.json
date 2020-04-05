@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-flexbox-table": "^1.0.2",
+    "react-flexbox-table": "^1.1.1",
     "react-hot-loader": "^4.8.2"
   },
   "devDependencies": {

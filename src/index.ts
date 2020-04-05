@@ -48,7 +48,7 @@ export declare namespace FlexTable {
     }
 
     interface Item<T> {
-        item?: T;
+        item: T;
     }
 
     interface Table<T> {

@@ -4,7 +4,7 @@ declare module 'react-flexbox-table' {
 
     export function BoundColumn<T>(props: FlexTable.BoundColumnProps<T>): JSX.Element;
 
-    export function CustomColumn<T>(props: FlexTable.CustomColumnProps<T>): JSX.Element;
+    export function CustomColumn<T>(props: FlexTable.ColumnProps<T>): JSX.Element;
 
     export function DataTable<T, ID>(props: FlexTable.DataTableProps<T, ID>): JSX.Element;
 
