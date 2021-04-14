@@ -3,7 +3,7 @@ import { FlexTable } from '../..';
 import { CustomColumn } from './custom-column';
 
 
-export const ActionColumn = <T extends {}>({ item, onAction, children, ...attrs }: FlexTable.ActionColumnProps<T>) => {
+export const ActionColumn = <T extends unknown>({ item, onAction, children, ...attrs }: FlexTable.ActionColumnProps<T>) => {
     const onClick: React.MouseEventHandler<HTMLAnchorElement> = event => {
         event.preventDefault();
         onAction(item, event);

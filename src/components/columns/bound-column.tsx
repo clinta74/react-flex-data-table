@@ -1,11 +1,11 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { getObjectByNamespace } from '../../util/'
 import { CustomColumn } from './custom-column';
 import { FlexTable } from '../..';
 
-type Formatter = ((value: unknown) => React.ReactNode) | undefined;
+type Formatter<T> = ((value: T) => React.ReactNode) | undefined;
 
-const getValue = (formatter: Formatter, value: unknown) => formatter ? formatter(value) : value;
+const getValue = <T extends unknown>(formatter: Formatter<T>, value: T) => formatter ? formatter(value) : value;
 
 /**
  * A bound column represents a table column which can 'bind' to a property of the items
