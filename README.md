@@ -13,9 +13,17 @@ There are two main components for rendering a table.  DataTable is the basic ren
 ### DataTable
 
 ``` javascript
-import FlexTable from 'react-flexbox-table';
+import { DataTable, BoundColumn, SubTable} from 'react-flexbox-table';
 
-const data = [
+interface MyData {
+		"firstName": string,
+		"lastName": string,
+		"amount": number,
+		"birthday": Date | string,
+		"colors": string,
+}
+
+const data: MyData = [
     {
 		"firstName": "Aretha",
 		"lastName": "Larsen",
@@ -28,16 +36,22 @@ const data = [
 
 const MyTable
     return (
-        <FlexTable.DataTable items={data} >
-            <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3"/>
-            <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3"/>
-            <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6"/>
-            <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.lastName === 'Andrews'}
-                        onSubTableRender={(item: MyData) => <ColorList color={item.colors}/>} />
-        </FlexTable.DataTable>
+        <DataTable items={data} >
+            <BoundColumn<MyData> binding={item => item.firstName} headerText="First Name" className="col-3"/>
+            <BoundColumn<MyData> binding={item => item.lastName} headerText="Last Name" className="col-3"/>
+            <BoundColumn<MyData> binding={item => item.comment} headerText="Comment" className="col-6"/>
+            <SubTable<MyData> hideHeader cellClassName="col-12" isVisible={item => item && item.lastName === 'Andrews'}
+                        onSubTableRender={item => <ColorList color={item.colors}/>} />
+        </DataTable>
     );
 }
-....
+```
+### Included Columns
+- BoundColumn
+- LinkColumn
+- ActionColumn
+- CustomColumn
+- SubTable
 
 ### Custom columns
 You can develope your own column types based by using the CustomColumn component using its onRender render property.
