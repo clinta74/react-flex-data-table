@@ -1,11 +1,11 @@
 {
   "name": "react-flex-data-table",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A flexbox table for react and Bootstrap 4 grid.",
   "main": "lib/index.js",
   "scripts": {
     "start": "parcel example/src/index.html --out-dir example/dist --open",
-    "build": "npm run build:js && npm run build:css",
+    "build": "npm run clean && npm run build:js && npm run build:css",
     "build:js": "tsc --pretty",
     "build:css": "node-sass src/sass/ --output lib/css",
     "clean": "rimraf lib",
@@ -33,40 +33,39 @@
     "react-dom": "^16.7.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/react-router-dom": "^5.1.7",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "parcel-bundler": "^1.12.5",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.9",
-    "@types/jest": "^24.0.18",
-    "@types/lodash": "^4.14.140",
+    "@types/classnames": "^2.2.11",
+    "@types/jest": "^24.9.1",
+    "@types/lodash": "^4.14.168",
     "@types/node": "^14.14.39",
     "@types/react": "^17.0.3",
-    "@types/react-dom": "^16.9.6",
-    "@types/react-router-dom": "^4.3.5",
-    "jest": "^25.2.7",
+    "@types/react-dom": "^17.0.3",
+    "jest": "^25.5.4",
     "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
-    "ts-jest": "^25.3.1",
-    "typescript": "^3.7.5"
+    "ts-jest": "^25.5.1",
+    "typescript": "^4.2.4"
   },
   "jest": {
     "preset": "ts-jest",
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/dist/"
+      "/lib/"
     ]
   },
   "files": [
-    "dist",
-    "src",
-    "index.d.ts"
+    "lib",
+    "src"
   ]
 }
