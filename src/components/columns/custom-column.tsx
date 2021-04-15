@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import { withHeader } from './with-header';
 import { TableCell } from '../elements';
 import { FlexTable } from '../..';
