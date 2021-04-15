@@ -1,5 +1,6 @@
 dist/
 .cache/
+lib/
 
 # Logs
 logs

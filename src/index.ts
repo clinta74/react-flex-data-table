@@ -1,12 +1,4 @@
-import * as components from './components';
-import * as elements from './components/elements';
-import * as columns from './components/columns';
-
-export default {
-    ...components,
-    ...elements,
-    ...columns,
-};
+export * from './components';
 
 export declare namespace FlexTable {
     //
@@ -48,7 +40,7 @@ export declare namespace FlexTable {
     }
 
     interface Item<T> {
-        item: T;
+        item?: T;
     }
 
     interface Table<T> {
@@ -157,7 +149,7 @@ export declare namespace FlexTable {
 
     interface BoundColumnProps<T> extends ColumnProps<T> {
         binding: ((item: T) => React.ReactNode) | string;
-        formatter?: (value: unknown) => React.ReactNode;
+        formatter?: <TValue>(value: TValue) => React.ReactNode;
         children?: never;
     }
 

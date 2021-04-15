@@ -1,10 +1,9 @@
 import React from 'react';
-
-import FlexTable from 'react-flexbox-table';
+import { TableCell, EditableForm, FlexTable } from '../../../../src/index';
 import { MyData } from './app';
 
 
-type ExampleEditFormProps = FlexTable.IForm<MyData>;
+type ExampleEditFormProps = FlexTable.Form<MyData>;
 
 export class ExampleEditForm extends React.PureComponent<ExampleEditFormProps, MyData> {
     constructor(props: ExampleEditFormProps) {
@@ -33,25 +32,25 @@ export class ExampleEditForm extends React.PureComponent<ExampleEditFormProps, M
         const { items, onSave, onCancel } = this.props;
         const { firstName, lastName, comment } = this.state;
         return (
-            <FlexTable.EditableForm 
+            <EditableForm 
                 onSave={onSave} 
                 onCancel={onCancel} 
                 getState={() => this.state}
                 items={items}
                 >
                     
-                <FlexTable.TableCell className="col-3">
+                <TableCell className="col-3">
                     <input type="text" className="form-control" value={firstName} name="firstName" onChange={this.onChangeInput} />
-                </FlexTable.TableCell>
+                </TableCell>
 
-                <FlexTable.TableCell className="col-3">
+                <TableCell className="col-3">
                     <input type="text" className="form-control" value={lastName} name="lastName" onChange={this.onChangeInput} />
-                </FlexTable.TableCell>
+                </TableCell>
 
-                <FlexTable.TableCell className="col">
+                <TableCell className="col">
                 <input type="text" className="form-control" value={comment} name="comment" onChange={this.onChangeInput} />
-                </FlexTable.TableCell>
-            </FlexTable.EditableForm>
+                </TableCell>
+            </EditableForm>
         );
     }
 }

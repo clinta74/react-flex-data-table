@@ -1,13 +1,13 @@
+import React from 'react';
 import { MyData } from "./app";
-import FlexTable from 'react-flexbox-table';
-
+import { TableRow, TableCell } from '../../../../src/index';
 
 const CustomFooter: React.FunctionComponent<{ items: MyData[], moreData: {} }> = ({ items }) => {
     return (
-        <FlexTable.TableRow>
-            <FlexTable.TableCell>
+        <TableRow>
+            <TableCell>
                 My Footer
-            </FlexTable.TableCell>
-        </FlexTable.TableRow>
+            </TableCell>
+        </TableRow>
     );
 }

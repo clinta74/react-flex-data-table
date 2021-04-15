@@ -1,15 +1,14 @@
 {
   "name": "react-flex-data-table",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "A flexbox table for react and Bootstrap 4 grid.",
   "main": "lib/index.js",
-  "types": "./index.d.ts",
   "scripts": {
-    "start": "npx parcel example/src/index.html --out-dir example/dist --open",
+    "start": "parcel example/src/index.html --out-dir example/dist --open",
     "build": "npm run build:js && npm run build:css",
-    "build:js": "npx tsc --pretty",
-    "build:css": "npx node-sass src/sass/ --output dist/css",
-    "clean": "npx rimraf dist",
+    "build:js": "tsc --pretty",
+    "build:css": "node-sass src/sass/ --output lib/css",
+    "clean": "rimraf lib",
     "prepare": "npm run clean && npm run build",
     "test": "jest"
   },
@@ -39,12 +38,14 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
+    "parcel-bundler": "^1.12.5",
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.140",
+    "@types/node": "^14.14.39",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^16.9.6",
     "@types/react-router-dom": "^4.3.5",
@@ -52,6 +53,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.13.0",
     "ts-jest": "^25.3.1",
     "typescript": "^3.7.5"
   },

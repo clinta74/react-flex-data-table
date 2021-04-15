@@ -1,6 +1,5 @@
 import React from 'react';
-import FlexTable from 'react-flexbox-table';
-
+import { DataTable, BoundColumn, EditableTable, SubTable } from '../../../../src/index';
 import { data } from './example-data';
 import { ExampleEditForm } from './example-edit-form';
 
@@ -78,20 +77,20 @@ export class App extends React.Component<AppProps, AppState> {
 
         return (
             <section className="container">
-                <h2>Flex Table Example</h2>
+                <h2>Flex Data Table Example</h2>
                 <div>
-                    <FlexTable.DataTable items={items} >
-                        <FlexTable.BoundColumn binding="firstName" headerText="First Name" className="col-3" />
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3" />
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col-6" />
-                        <FlexTable.SubTable hideHeader cellClassName="col-12" isVisible={(item: MyData) => item && item.id === 2}
-                            onSubTableRender={(item: MyData) => <ColorList color={item.colors} />} />
-                    </FlexTable.DataTable>
+                    <DataTable<MyData, number> items={items} >
+                        <BoundColumn<MyData> binding="firstName" headerText="First Name" className="col-3" />
+                        <BoundColumn<MyData> binding={item => item.lastName} headerText="Last Name" className="col-3" />
+                        <BoundColumn<MyData> binding={item => item.comment} headerText="Comment" className="col-6" />
+                        <SubTable<MyData> hideHeader cellClassName="col-12" isVisible={item => item && item.id === 2}
+                            onSubTableRender={item => <ColorList color={item.colors} />} />
+                    </DataTable>
                 </div>
                 <hr />
                 <h2>Flex Edit Table Example</h2>
                 <div>
-                    <FlexTable.EditableTable
+                    <EditableTable
                         items={items}
                         isEditing={isEditing}
                         editID={editId}
@@ -99,10 +98,10 @@ export class App extends React.Component<AppProps, AppState> {
                         onEdit={this.onEdit}
                         form={this.renderForm}
                     >
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.firstName} headerText="First Name" className="col-3" />
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.lastName} headerText="Last Name" className="col-3" />
-                        <FlexTable.BoundColumn binding={(item: MyData) => item.comment} headerText="Comment" className="col" />
-                    </FlexTable.EditableTable>
+                        <BoundColumn<MyData> binding={item => item.firstName} headerText="First Name" className="col-3" />
+                        <BoundColumn<MyData> binding={item => item.lastName} headerText="Last Name" className="col-3" />
+                        <BoundColumn<MyData> binding={item => item.comment} headerText="Comment" className="col" />
+                    </EditableTable>
                 </div>
             </section>
         );
@@ -112,8 +111,8 @@ export class App extends React.Component<AppProps, AppState> {
 const ColorList: React.FunctionComponent<{ color: string }> = ({ color }) => {
     const colors = Array.from(color);
     return (
-        <FlexTable.DataTable items={colors}>
-            <FlexTable.BoundColumn binding={(item: string) => item} headerText="Color" className="col-12" />
-        </FlexTable.DataTable>
+        <DataTable items={colors}>
+            <BoundColumn binding={(item: string) => item} headerText="Color" className="col-12" />
+        </DataTable>
     );
 }
