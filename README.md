@@ -1,4 +1,4 @@
-# react-flexbox-table
+# react-flex-data-table
 A React based table and inline row editable table using flexbox.  This table uses declarative components to define 
 its columns, rows, and header. Support for inline editing, insert, and deletion via defineable row edit feature.
 
@@ -6,7 +6,7 @@ its columns, rows, and header. Support for inline editing, insert, and deletion 
 
 ### Installation
 ```
-npm i react-flexbox-table
+npm i react-flex-data-table
 ```
 ### Quick Start
 There are two main components for rendering a table.  DataTable is the basic render a table component that produces rows of defined columns with optional headers.  EditTable extends DataTable to provide Create, Update, and Delete functionality.  The Editing is provided as an inline row.  It also provides a validation function to hook into the onSave call back.
