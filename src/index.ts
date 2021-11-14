@@ -75,7 +75,7 @@ export declare namespace FlexTable {
         children: TableChildNodes<T>;
     }
 
-    type FormProps<T, P = {}, M = {}> = Form<T> & {
+    type FormProps<T, P, M> = Form<T> & {
         getState: () => T;
         children?: FormChildNodes;
         validationTests?: ValidationTest<M, P>[];
