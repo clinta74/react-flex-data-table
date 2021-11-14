@@ -46,7 +46,7 @@ export function getFooter<ID, T>(props: FlexTable.EditableTableProps<ID, T>) {
 
 // - Saving items
 
-export function getSaveHandler<T>(props: FlexTable.FormProps<T>) {
+export function getSaveHandler<T>(props: FlexTable.FormProps<T, object, object>) {
     const { onSave, items, getState, onValidation, validationTests } = props;
     const item = JSON.parse(JSON.stringify(getState()));
 

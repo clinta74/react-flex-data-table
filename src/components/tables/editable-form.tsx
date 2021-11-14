@@ -7,7 +7,7 @@ import { TableRow, TableCell } from "../elements";
 import { combineChildren, getSaveHandler } from "./editing-functions";
 
 
-export function EditableForm<T>(props: FlexTable.FormProps<T>) {
+export function EditableForm<T>(props: FlexTable.FormProps<T, object, object>) {
     const { children, onCancel } = props;
 
     return (
