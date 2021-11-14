@@ -1,6 +1,6 @@
 {
   "name": "react-flex-data-table",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A flexbox table for react and Bootstrap 4 grid.",
   "main": "lib/index.js",
   "scripts": {
